@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>这是标题</title>
+</head>
+<body>
+
+    <form>
+        <input type="text"><br>
+        <input type="password"><br>
+
+        <input type="radio" name="sex" id="male">
+        <label for="male">男</label>
+
+        <input type="radio" name="sex" id="fomale" checked="checked">
+        <label for="fomale">女</label><br>
+
+        <input type="checkbox" id="eat"><label for="eat">吃饭</label>
+        <input type="checkbox" id="sleep"><label for="sleep">睡觉</label>
+        <input type="checkbox" checked="checked" id="game"><label for="game">打游戏</label>
+        <input type="checkbox" id="learn"><label for="learn">学习</label>
+        <br>
+
+        <!-- 按钮的第一种写法 -->
+        <!-- 这里的onclick是一种js的代码，onclick表示点击按钮触发引号的内容，alert表示弹出一个对话框 -->
+        <input type="button" value="按钮" onclick="alert('hello word')"> 
+        <!-- 按钮的第二种写法 -->
+        <button onclick="alert('hello')">也是一个按钮</button>
+        <br>
+
+        <!-- 上传文件选项框 -->
+        <input type="file"><br>
+
+        <!-- 下拉菜单，可以使用 selected属性 来选择默认选项 -->
+        <select>
+            <option>请选择科目</option>
+            <option >语文</option>
+            <option >数学</option>
+            <option selected="selected">英语</option>
+        </select><br>
+
+        <!-- 多行编辑文本框，cols 和 rows 表示默认显示的尺寸 -->
+        <textarea cols="30" rows="10"></textarea>
+    </form>
+
+    <br>
+    <div>
+        <span>张三</span>
+        <span>李四</span>
+        <span>王五</span>
+    </div>
+    <div>
+        <span>王五</span>
+        <span>李四</span>
+        <span>张三</span>
+    </div>
+    <div>
+        <span>李四</span>
+        <span>王五</span>
+        <span>张三</span>
+    </div>
+
+    <!-- <h1>无序列表</h1>
+    <ul>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+    </ul>
+
+    <h1>有序列表</h1>
+    <ol>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+    </ol>
+
+    <h1>自定义列表</h1>
+    <dl>
+        <dt>路人甲集合</dt>
+        <dd>张三</dd>
+        <dd>李四</dd>
+        <dd>王五</dd>
+    </dl> -->
+
+    <!-- <style>
+        td{
+            text-align:center;
+        }
+    </style>
+    <table border="1px" width="500px">
+        <tr>
+            <th>姓名</th>
+            <th>电话</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>111</td>
+        </tr>
+
+        <tr>
+            <td>李四</td>
+            <td>125</td>
+        </tr>
+    </table> -->
+</body>
+</html>
