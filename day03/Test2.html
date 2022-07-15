@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        /* 并集选择器 */
+        /* ul>.red,ol>.red{
+            color: red;
+            font-size: 100px;
+        } */
+
+        /* 伪选择器：鼠标悬停显示该样式 */
+        ul .red:hover{
+            color: yellow;
+        }
+        /* 伪选择器：鼠标左键点击不放，显示该样式 */
+        ul .red:active{
+            color: green;
+        }
+    </style>
+
+    <ul>
+        <li class="red">兔总裁</li>
+        <li><a href="#" class="red">兔总裁</a></li>
+        <li>兔总裁</li>
+    </ul>
+
+    <ol>
+        <li>咬人猫</li>
+        <li class="red">咬人猫</li>
+        <li><a href="#" class="red">咬人猫</a></li>
+    </ol>
+</body>
+</html>

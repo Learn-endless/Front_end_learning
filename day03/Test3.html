@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .ret{
+            /* 如果前面的字体没有，那么就会找下一个，如果都没有就直接默认 */
+            font-family: '宋体', 'kaiti';
+            /* font-family: '宋体'; */
+            color: rgb(0, 255, 0);
+            text-align: left;
+        }
+        .flg{
+            font-family: '楷体';
+            font-weight: 900;
+            color: red;
+            text-align: center;
+        }
+        .one{
+            color:#00ff00;
+            text-align: right;
+        }
+        .eme{
+            font-style: normal;
+        }
+    </style>
+    <div>
+        <em class="eme">hello word</em>
+    </div>
+    <div class="ret">
+        一行字
+    </div>
+
+    <div class="flg" style='font-style:italic'>
+        另一行字
+    </div>
+
+    <div class="one">
+        最后一行
+    </div>
+</body>
+</html>

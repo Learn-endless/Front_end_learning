@@ -1,0 +1,10 @@
+/*
+ CSS 的变量通常的命名方式：脊柱命名法，例如：font-size 使用 - 连接 
+ java中通常使用的是 驼峰命名法 例如：numCount
+ C++/python 通常使用的是 蛇形命名法 例如：num_count
+*/
+
+p{
+    color: rgb(107, 132, 74);
+    font-size: 200px;
+}
