@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /* 水平居中，垂直居中 */
+        /* div{
+            width: 300px;
+            height: 150px;
+            font-size: 20px;
+            text-align: center;
+            background-color: grey;
+            line-height: 150px;
+        } */
+        /* 如果元素的高度为 150px,那么只需要给 文字 行高设置为 相同的值 ，就可以使其垂直居中 */
+
+        .one{
+            width: 1280px;
+            height: 650px;
+            background-color: blue;
+            /* background-color: rgb(255, 0, 0);
+            background-color: #ff0000;
+            background-color: rgba(255, 0, 0, .4); */
+            /* transparent表示应用父元素的背景颜色 */
+            /* background-color: transparent; */
+            background-image: url(./3.jpg);
+            /* background-repeat: repeat-y;
+            background-repeat: repeat-x;
+            background-repeat: repeat; */
+            background-repeat: no-repeat;
+            /* 写一个 center 或者 两个 center 效果一样 */
+            background-position: center center;
+            background-size: contain;
+        }
+
+        div{
+            width: 300px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50px;
+            /* border-top-left-radius:50px ; */
+        }
+
+        a{
+            width: 100px;
+            height: 100px;
+            /* inline-block：行内块元素，不独占一行，可以设置宽度高度 
+               inline：行内元素，不独占一行，不能设置宽度高度
+               block：块级元素，独占一行，能设置宽度和高度
+               none：不显示当前元素*/
+            display: block;
+            text-decoration: none;
+        }
+    </style>
+    <div>
+        <!-- 这是一段话 -->
+    </div>
+
+    <a href="#">一个超链接</a>
+    <a href="#">另一个超链接</a>
+</body>
+</html>
