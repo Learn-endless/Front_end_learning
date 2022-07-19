@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let arr = [1,2,3,4];
+        console.log(arr);                 //结果：1,2,3,4
+        //用于删除元素
+        //第一个参数：从哪儿开始删除
+        //第二个参数：删除多少个
+        arr.splice(1,2);
+        console.log(arr);                 //结果：1,4
+
+        //使用splice完成元素的插入
+        arr.splice(1,0,2,3);
+        console.log(arr);                 //结果：1,2,3,4
+
+        //使用splice完成元素的替换
+        arr.splice(0,4,5,6,7,8);
+        console.log(arr);                 //结果：5,6,7,8
+
+        // let arr = [1,2,3,4];
+        // arr.push(100);
+        // console.log(arr);
+        // console.log(arr[4]);
+
+        // let arr = [1,2,3,4];
+        // console.log(arr.length);
+        // arr['hello'] = 10;         //同理也会给 arr 数组添加一个属性，key为 hello ,value 为 10
+        // console.log(arr.length);
+        // console.log(arr);
+        // console.log(arr['hello']);
+        // console.log(arr.hello);
+
+        // let arr = [1,2,3,4];
+        // //原先的数组长度
+        // console.log(arr.length);                //结果：4
+        // arr[-1] = 10;
+        // //执行 arr[-1] = 10 后的数组长度
+        // console.log(arr.length);                //结果：4
+        // //数组内容
+        // console.log(arr);                       //结果：[1,2,3,4,-1:10]
+        // //下标-1的值是啥？
+        // console.log(arr[-1]);                   //结果：10
+
+        // //总结：我们发现如果给 -1 下标添加一个值,就会给该数组添加一个属性,属性的表现形式为：key：value(键值对)
+          
+
+        // let arr = [1,2,3,4];
+        // //使用length来获取数组长度
+        // console.log(arr);
+        // console.log(arr.length);
+
+        // //这种操作再 java 中就会 抛出异常：数组下标越界
+        // //在 JS 中就不会,并且还将数组的长度给改变了。
+        // arr[100] = 10;
+        // console.log(arr);
+        // console.log(arr.length);
+        // console.log(arr[50]);       //中间的元素的值也默认是 undefined
+
+        // let arr = [1,2,3,4];
+        // //与java一样可以通过for循环拿到所有的值
+        // for(let i = 0; i < arr.length; i++){
+        //     console.log(arr[i]);
+        // }
+
+        // //不是很常用,很java的 ArrayList 有点像
+        // let arr1 = new Array();
+        // //JS中打印数组内容使用 console.log 就行
+        // console.log(arr1);
+        
+        // //创建一个空数组
+        // let arr2 = [];
+        // console.log(arr2);
+
+        // //创建一个有初始值的数组
+        // let arr3 = [1,2,3,4];
+        // console.log(arr3);
+
+        // //JS的数组没有具体类型,里面什么类型的元素都能放
+        // let arr4 = [1,'hello',true,undefined,null,NaN];
+        // console.log(arr4);
+    </script>
+</body>
+</html>
