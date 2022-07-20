@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div>hello word</div>
+    <button>这是一个按钮</button> -->
+    
+    <input type="text" class="one" value="0">
+    <button>按钮</button>
+
+    <script>
+        let obj = document.querySelector('button');
+        obj.onclick = function(){
+            let res = document.querySelector('.one');
+            let val = res.value;
+            val = parseInt(val);
+            val += 1;
+
+            res.value = val;
+        }
+
+        // //1.数据源
+        // let obj = document.querySelector('button');
+        // //2.事件类型
+        // obj.onclick = function(){
+        //     //3.事件处理程序
+        //     //拿到元素的内容
+        //     let val = obj.innerHTML;
+        //     //打印在控制台上
+        //     console.log(val);
+        // }
+    </script>
+</body>
+</html>

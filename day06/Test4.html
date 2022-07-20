@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div class="one">
+        你好啊
+    </div>
+
+    <ul>
+        <li class="one">张三</li>
+        <li class="one">李四</li>
+        <li class="one">王五</li>
+        <li class="one">赵六</li>
+    </ul> -->
+    <!-- <div class="one"><h1>My name is 张三</h1></div>
+
+    <button class="two">这是一个按钮</button> -->
+
+    <div>1</div>
+    <button>加1按钮</button>
+    <script>
+
+        let obj = document.querySelector('button');
+        obj.onclick = function(){
+            let res = document.querySelector('div');
+            let val = res.innerHTML;
+            //注意：在这里需要将 val 转换成一个 数字类型。
+            val = parseInt(val);
+            //加1
+            val += 1;
+            //将值又重新写回去
+            res.innerHTML = val;
+        }
+
+        // let obj = document.querySelector('.two');
+        // obj.onclick = function(){
+        //     let res = document.querySelector('.one');
+        //     res.innerHTML = '<h1>hello word</h1>';
+        // }
+
+        // let obj = document.querySelectorAll('.one');
+        // console.log(obj);
+    </script>
+
+</body>
+</html>

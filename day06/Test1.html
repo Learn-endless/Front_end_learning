@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        {
+            {
+                {
+                    //var是全局变量,是属于 window 对象的属性。
+                    var num = 20;
+                }
+            }
+        }
+        function hello (){
+            //hello 如果找不到，就会 "逐级向上" 找。先找到哪个就是哪个。
+            console.log(num);
+        }
+        hello();
+        //调用 window 对象的属性
+        console.log(window.num);
+    </script>
+</body>
+</html>

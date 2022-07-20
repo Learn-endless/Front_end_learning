@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function student(name,age,eat){
+            this.name = name;
+            this.age = age;
+            this.eat = function(){
+                console.log('吃'+eat);
+            }
+        }
+
+        let student1 = new student('王五',21,'油条');
+        console.log(student1.name);
+        console.log(student1.age);
+        student1.eat();
+
+        let student2 = new student('赵六',26,'包子');
+        console.log(student2.name);
+        console.log(student2.age);
+        student2.eat();
+
+        // // 和 java 的实例化对象有点像
+        // let student = new Object();
+        // // 添加属性和方法
+        // student.name = '李四';
+        // // 也可以和 操作数组一样 来添加属性
+        // student['age'] = 25;
+        // student.sleep = function(){
+        //     console.log('睡觉');
+        // }
+        // student.eat = function(){
+        //     console.log('吃饭');
+        // }
+
+
+        // // 创建对象
+        // let student = {
+        //     // 方法和属性都是通过 键值对 的方式来表示
+        //     name:'张三',
+        //     age:23,
+        //     gender:'男',
+        //     phone:'123456',
+        //     address:'地球村',
+        //     // 每个键值对之间使用 , 来分割
+        //     sleep:function(){
+        //         console.log('呼呼大睡');
+        //     },
+
+        //     eat:function(){
+        //         console.log('大口吃肉');
+        //     },
+        // };
+
+        // // 使用对象
+        // console.log(student.name);
+        // console.log(student.age);
+        // student.sleep();
+        // student.eat();
+    </script>
+</body>
+</html>
