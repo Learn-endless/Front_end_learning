@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cpp.css">
+</head>
+<body>
+
+    <!-- <img src="44.jpg" class="one"> -->
+
+    <div class="light one" class="one">这是一段话 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur tenetur rem qui voluptas modi odio! Nam asperiores, quam nobis consequatur deleniti quidem, ab vero impedit itaque in veniam officiis necessitatibus.</div>
+    <button>关灯</button>
+    <script>
+
+        let obj = document.querySelector('div');
+        let res = document.querySelector('button');
+        res.onclick = function(){
+            let val = obj.className;
+            console.log(val);
+
+            for(let i = 0; i < val.length; i++){
+                if(val[i] == 'light'){
+                    obj.className = 'dark';
+                    res.innerHTML = '开灯';
+                    break;
+
+                }else if(val[i] == 'dark'){
+                    obj.className = 'light one';
+                    res.innerHTML = '关灯';
+                    break;
+                }
+            }
+        }
+
+        // let obj = document.querySelector('.one');
+        // obj.onclick = function(){
+
+        //     //使用这个可以显示当前 DOM 对象的所有属性
+        //     console.dir(obj);
+
+        //     let val = obj.src;
+        //     //indexOf 返回的是一个 下标
+        //     if(val.indexOf('44.jpg') >= 0){
+        //         obj.src = '142.jpg';
+
+        //     }else if(val.indexOf('142.jpg') >= 0){
+        //         obj.src = '44.jpg';
+        //     }
+        // }
+    </script>
+</body>
+</html>

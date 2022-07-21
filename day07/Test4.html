@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全选按钮</title>
+</head>
+<body>
+    <input type="checkbox" class="all">全部选择<br>
+    <input type="checkbox" class="people">张飞<br>
+    <input type="checkbox" class="people">刘备<br>
+    <input type="checkbox" class="people">关羽<br>
+    <input type="checkbox" class="people">吕布<br>
+
+    <script>
+        //1.实现全选操作
+        let all = document.querySelector('.all');
+        let peoples = document.querySelectorAll('.people');
+        all.onclick = function(){
+            for(let i = 0; i < peoples.length; i++){
+                peoples[i].checked = all.checked;
+            }
+        }
+        //2.实现取消全选或自动全选操作
+        for(let i = 0; i < peoples.length; i++){
+            //给每个 input 元素都注册一个 点击事件
+            peoples[i].onclick = function(){
+                
+                //通过一个函数来判断 全选框 的状态
+                all.checked = checkPeoples(peoples);
+            }
+        }
+
+        //检查函数声明
+        function checkPeoples(peoples){
+            //每个复选框都要检查一下
+            for(let i = 0; i < peoples.length; i++){
+                if(peoples[i].checked == ''){
+                    return '';
+                }
+            }
+            return 'checked';
+        }
+    </script>
+</body>
+</html>

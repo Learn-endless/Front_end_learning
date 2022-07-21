@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按钮点击切换</title>
+</head>
+<body>
+    <input type="button" value="播放" class="ip">
+
+    <script>
+        let input = document.querySelector('.ip');
+        input.onclick = function(){
+            //获取 input 对象的 value 属性
+            let val = input.value;
+            //通过判断值的内容,来进行修改
+            if(val == '播放'){
+                input.value = '关闭';
+
+            }else if(val == '关闭'){
+                input.value = '播放';
+            }
+        }
+    </script>
+</body>
+</html>

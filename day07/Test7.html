@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增节点操作</title>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+    <button>
+        删除
+    </button>
+
+    <script>
+        //1.创建一个新的 div 节点
+        let newDiv = document.createElement('div');
+        //2.给这个 div 元素增加一些属性
+        newDiv.className = 'One';
+        newDiv.id = 'tes';
+        newDiv.innerHTML = 'hello word';
+        //3.将这个新的节点 挂到 dom 树上
+        let div = document.querySelector('.container');
+        div.appendChild(newDiv);
+
+        //实现删除节点操作
+        let button = document.querySelector('button');
+        button.onclick = function(){
+            //通过 removeChild 方法来删除 已有的节点
+            div.removeChild(newDiv);
+        }
+    </script>
+</body>
+</html>

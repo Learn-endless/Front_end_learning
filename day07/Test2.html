@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片点击切换</title>
+</head>
+<body>
+    <img src="44.jpg">
+    
+    <script>
+        let img = document.querySelector('img');
+        img.onclick = function(){
+            // 拿到 img 对象 中的 src 属性值
+            let url = img.src;
+            // 检查当前显示的是哪张图片
+            if(url.indexOf('44.jpg') >= 0){
+                //更改 src 的值
+                img.src = '142.jpg';
+			
+            // 同上
+            }else if(url.indexOf('142.jpg') >= 0){
+                img.src = '44.jpg';
+            }
+        }
+    </script>
+</body>
+</html>

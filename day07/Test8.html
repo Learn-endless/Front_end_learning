@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜数字游戏</title>
+</head>
+<body>
+
+    <button id="rest">重新开始一局游戏</button>
+    <div>
+        请输入要猜的数字：
+        <input type="text" class="inputValue">
+        <button class="guess">猜</button>
+    </div>
+    <div>
+        已经猜的次数：
+        <span class="guessCount">0</span>
+    </div>
+    <div>
+        结果：
+        <span class="guessValue"></span>
+    </div>
+
+    <script>
+
+        //先将需要拿到的对象都准备好
+        let rest = document.querySelector('#rest');
+        let guess = document.querySelector('.guess');
+        let inputValue = document.querySelector('.inputValue');
+        let guessValue = document.querySelector('.guessValue');
+        let guessCount = document.querySelector('.guessCount');
+
+        //1.首先要生成一个随机数  [1,100]
+        let number = Math.floor((Math.random()*100)+1)
+        //在控制台打印一下随机数，方便调试
+        console.log(number);
+        //2.注册 猜 的点击事件
+        guess.onclick = function(){
+            //处理不输入的情况
+            if(inputValue.value == ''){
+                return;
+            }
+            //3.拿到用户输入的数字
+            let val = parseInt(inputValue.value);
+            console.log(typeof(val));    //观察 val 的类型
+            //4.判断数字的大小
+            if(val > number){
+                guessValue.innerHTML = '猜大了';
+                guessValue.style.color = 'red';
+            }else if(val < number){
+                guessValue.innerHTML = '猜小了';
+                guessValue.style.color = 'blue';
+            }else{
+                guessValue.innerHTML = '猜对了';
+                alert('猜对了！');
+                location.reload();
+            }
+
+            //5.修改 已经猜的次数
+            let count = guessCount.innerHTML;
+            count = parseInt(count);
+            count += 1;
+            guessCount.innerHTML = count;
+        }
+
+        //6.注册重新来一把的点击事件
+        rest.onclick = function(){
+            //location用来控制页面的链接
+            location.reload();   //刷新页面
+        }
+    </script>
+</body>
+</html>

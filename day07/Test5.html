@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过 style 属性修改 CSS 内联样式</title>
+</head>
+<body>
+    <div style="font-size: 20px;">这是一段话</div>
+
+    <script>
+        let div = document.querySelector('div');
+        div.onclick = function(){
+            //获取 div 中的 style 属性里的 font-size 属性值
+            let val = div.style.fontSize;
+            //将其转换成一个数字
+            val = parseInt(val);
+            //大小加5px
+            val += 5;
+            //重写写回去
+            div.style.fontSize = val + 'px';  //注意 parseInt 遇到非数字字符就转化停止了
+        } 
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标点击开关灯</title>
+</head>
+<body>
+
+    <style>
+        /* 白天样式 */
+        .light{
+            font-size: 10px;
+            color: black;
+            background-color: white;
+            height: 500px;
+            width: 100%;
+        }
+        /* 夜间样式 */
+        .dark{
+            font-size: 50px;
+            color: white;
+            background-color: black;
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+    
+    <div class="light">这是一段话</div>
+    <button>关灯</button>
+
+    <script>
+        let div = document.querySelector('.light');
+        let button = document.querySelector('button');
+        // 按钮点击事件
+        button.onclick = function(){
+            //判断当前样式是 白天 还是 黑夜
+            if(div.className == 'light'){
+                div.className = 'dark';
+                button.innerHTML = '开灯';
+
+            }else if(div.className == 'dark'){
+                div.className = 'light';
+                button.innerHTML = '关灯';
+            }
+        }
+    </script>
+</body>
+</html>

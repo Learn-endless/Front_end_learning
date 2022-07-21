@@ -1,0 +1,16 @@
+.light{
+    color: black;
+    background-color: white;
+    height: 500px;
+}
+
+.dark{
+    color: white;
+    background-color: black;
+    height: 500px;
+}
+
+.one{
+    font-size: 30px;
+    font-family: '微软雅黑';
+}
