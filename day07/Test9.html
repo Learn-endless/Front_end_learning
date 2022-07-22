@@ -100,6 +100,13 @@
         let three = document.querySelector('#three');
 
         button.onclick = function(){
+
+            //判断一下是否填写完毕
+            if(one.value == '' || two.value == '' || three.value == ''){
+                //不再进行下面的操作，直接返回
+                return;
+            }
+
             //创建一个新的 div 节点
             let div = document.createElement('div');
             //将属性添加到新节点中
