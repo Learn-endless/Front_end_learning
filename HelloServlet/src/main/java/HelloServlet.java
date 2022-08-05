@@ -15,11 +15,11 @@ public class HelloServlet extends HttpServlet {
 //    1.收到请求并进行解析。（Tomcat帮我们实现了）
 //    2.根据请求计算响应。（doGet方法）
 //    3.通过响应构建数据并返回。（Tomcat帮我们实现了）
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        HttpServletRequest req : Tomcat收到了请求并解析成了对象。
 //        HttpServletResponse resp : 这是一个空对象,等待我们进行填充数据（添加一些属性）。
 //        注释掉，不要它调用 父类 的doGet方法
-//        super.doGet(req, resp);
+        super.doGet(req, resp);
 
         resp.setContentType("text/html;charset=utf8");
         System.out.println("hello word!");
