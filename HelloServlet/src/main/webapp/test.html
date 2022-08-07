@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>body格式为 application/x-www-form-urlencoded</title>
+</head>
+<body>
+<!--    <form action="postGetParameter" method="post">-->
+<!--        <input type="text" name="userId">-->
+<!--        <input type="text" name="classId">-->
+<!--        <input type="submit" name="提交">-->
+<!--    </form>-->
+    <input type="text" id="userId">
+    <input type="text" id="classId">
+    <input type="button" value="提交" id="submit">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        let userId = document.querySelector("#userId");
+        let classId = document.querySelector("#classId");
+        let button = document.querySelector("#submit");
+        button.onclick = function(){
+            let uString = userId.value;
+            let cString = classId.value;
+            $.ajax({
+                type:"post",
+                url:"postJson",
+                contentType:"application/json",
+                // data表示设置 post请求中 body 中的内容
+                data:JSON.stringify({
+                    // 这是个js对象
+                    userId:uString,
+                    classId:cString
+                }),
+                success:function(body){
+                    console.log(body);
+                },
+            });
+        }
+    </script>
+</body>
+</html>

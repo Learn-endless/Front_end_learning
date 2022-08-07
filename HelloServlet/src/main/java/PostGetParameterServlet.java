@@ -5,14 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/getParameter")
-public class GetParameter extends HttpServlet {
+@WebServlet("/postGetParameter")
+public class PostGetParameterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String age = req.getParameter("age");
+        String userId = req.getParameter("userId");
+        String classId = req.getParameter("classId");
 
-//        resp.setContentType("text/html;charset=utf8");
-        resp.getWriter().write("name : " + name + "<br>" + "age : " + age);
+        resp.getWriter().write("userId = " + userId + "  classId = " + classId);
     }
 }
