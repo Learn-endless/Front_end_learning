@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表白墙</title>
+</head>
+<body>
+
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 100%;
+        }
+
+        h1{
+            font-family: '楷体';
+            font-size: 60px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        p{
+            font-family: '宋体';
+            color: grey;
+            text-align: center;
+            padding: 4px;
+        }
+        .row{
+            width: 400px;
+            height: 50px;
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        span{
+            display: block;
+            width: 80px;
+            font-size: 20px;
+        }
+        .edit{
+            display: block;
+            width: 250px;
+            height: 40px;
+            font-size: 15px;
+            text-indent: 0.5em;
+            outline: none;
+            line-height: 40px;
+        }
+        button{
+            width: 300px;
+            height: 40px;
+            border: none;
+            background-color: orange;
+            border-radius: 40px;
+            font-size: 20px;
+            color: white;
+            line-height: 40px;
+        }
+
+        button:active{
+            background-color: gray;
+        }
+    </style>
+
+    <div class="container">
+        <h1>表白墙</h1>
+        <p>输入后点击提交,会将信息显示在表格中</p>
+        <div class="row">
+            <span>谁:</span>
+            <input type="text" class="edit" id="one">
+        </div>
+        <div class="row">
+            <span>对谁:</span>
+            <input type="text" class="edit" id="two">
+        </div>
+        <div class="row">
+            <span>说什么:</span>
+            <input type="text" class="edit" id="three">
+        </div>
+        <div class="row">
+            <button>提交</button>
+        </div>
+    </div>
+
+    <!-- 引入jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        //准备所需要的dom对象
+        let container = document.querySelector('.container');
+        let button = document.querySelector('button');
+        let one = document.querySelector('#one');
+        let two = document.querySelector('#two');
+        let three = document.querySelector('#three');
+
+
+        //在加载页面时,需要从服务器拿到之前提交的数据
+        function before(){
+            $.ajax({
+                type:'get',
+                url:'message',
+                contentType:'application/x-www.form-urlencoded',
+                success:function(body){
+                    for(let i = 0; i < body.length; i++){
+                        //创建一个新的 div 节点
+                        let div = document.createElement('div');
+                        //将属性添加到新节点中
+                        div.className = 'row';
+                        div.innerHTML = body[i].who1 + '对' + body[i].who2 + '说' + body[i].content;
+                        //将新节点挂到dom树上
+                        container.appendChild(div);
+                    }
+                }
+            });
+        };
+        before();
+
+        button.onclick = function(){
+
+            //判断一下是否填写完毕
+            if(one.value == '' || two.value == '' || three.value == ''){
+                //不再进行下面的操作，直接返回
+                return;
+            }
+
+            $.ajax({
+                type:'post',
+                url:'message',
+                contentType:'application/json',
+                // 先使用input标签中的数据构造一个js对象
+                // 然后通过 JSON.stringify() 将js对象转换成一个JSON格式的字符串作为body中的数据
+                data:JSON.stringify({
+                    who1:one.value,
+                    who2:two.value,
+                    content:three.value
+                }),
+                success:function(body){
+                    // 收到响应之后,来个alert提示
+                    alert("提交成功!");
+                },
+                error:function(body){
+                    alert("提价失败!");
+                }
+            });
+
+            //创建一个新的 div 节点
+            let div = document.createElement('div');
+            //将属性添加到新节点中
+            div.className = 'row';
+            div.innerHTML = one.value + '对' + two.value + '说' + three.value;
+            //将新节点挂到dom树上
+            container.appendChild(div);
+
+            //清空 input 输入框中的内容
+            one.value = '';
+            two.value = '';
+            three.value = '';
+        }
+    </script>
+</body>
+</html>
