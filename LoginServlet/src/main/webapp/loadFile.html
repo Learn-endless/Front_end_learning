@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传文件</title>
+</head>
+<body>
+    <!-- 这里注意在 form 表单里,上传文件时,需要加上 enctype 属性 -->
+    <form action="load" method="post" enctype="multipart/form-data">
+            <input type="file" name="MyFile">
+            <input type="submit" value="提交">
+    </form>
+</body>
+</html>
