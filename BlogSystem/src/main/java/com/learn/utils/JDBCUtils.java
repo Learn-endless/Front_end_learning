@@ -24,8 +24,8 @@ public class JDBCUtils {
                 if(dataSource == null){
                     dataSource = new MysqlDataSource();
                     ((MysqlDataSource)dataSource).setUrl(URL);
-                    ((MysqlDataSource)dataSource).setUrl(URL);
-                    ((MysqlDataSource)dataSource).setUrl(URL);
+                    ((MysqlDataSource)dataSource).setUser(USERNAME);
+                    ((MysqlDataSource)dataSource).setPassword(PASSWORD);
                 }
             }
         }

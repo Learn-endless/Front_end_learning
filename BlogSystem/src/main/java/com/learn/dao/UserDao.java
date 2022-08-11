@@ -126,4 +126,30 @@ public class UserDao {
         }
         return false;
     }
+
+    //通过 userName 来查找 用户信息
+    public User selectByUserName(String username){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try{
+            connection = JDBCUtils.getConnection();
+            String sql = "select * from where username = ?";
+            statement = connection.prepareStatement(sql);
+            statement.setString(1,username);
+            resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                User user = new User();
+                user.setUserId(resultSet.getInt("userId"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                return user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeAll(connection,statement,resultSet);
+        }
+        return null;
+    }
 }

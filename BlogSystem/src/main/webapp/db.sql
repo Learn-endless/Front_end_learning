@@ -10,6 +10,10 @@ create table blog(
     postTime datetime      -- 发布时间
 );
 
+insert into blog values(null,'测试博客一','这是一串随机的字符',1,now());
+insert into blog values(null,'测试博客二','这是一串随机的字符',2,now());
+insert into blog values(null,'测试博客三','这是一串随机的字符',3,now());
+
 create table user(
     userId int primary key auto_increment,
     username varchar(128) unique,    -- 唯一性约束

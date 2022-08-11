@@ -1,6 +1,8 @@
 package com.learn.pojo;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 //每一个 Blog 对象就代表 数据库 中blog表中的每一条数据
 public class Blog {
     private int blogId;
@@ -53,8 +55,10 @@ public class Blog {
         this.userId = userId;
     }
 
-    public Timestamp getPostTime() {
-        return postTime;
+    public String getPostTime() {
+        //针对时间来进行格式化
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return format.format(postTime);
     }
 
     public void setPostTime(Timestamp postTime) {

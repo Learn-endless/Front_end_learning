@@ -54,7 +54,13 @@ public class BlogDao {
                 Blog blog = new Blog();
                 blog.setBlogId(resultSet.getInt("blogId"));
                 blog.setTitle(resultSet.getString("title"));
-                blog.setContent(resultSet.getString("content"));
+                //这里我们不需要获取所有的博客内容信息，所以需要进行截断，这里就设置显示前50个字符
+                String content = resultSet.getString("content");
+                if(content.length() > 50){
+                    //只取前50个字符
+                    content = content.substring(0, 50) + "......";
+                }
+                blog.setContent(content);
                 blog.setUserId(resultSet.getInt("userId"));
                 blog.setPostTime(resultSet.getTimestamp("postTime"));
                 Blogs.add(blog);
