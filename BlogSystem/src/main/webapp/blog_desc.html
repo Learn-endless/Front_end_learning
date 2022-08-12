@@ -7,6 +7,13 @@
     <title>博客详情页</title>
     <link rel="stylesheet" href="CSS/common.css">
     <link rel="stylesheet" href="CSS/blog_desc.css">
+
+    <!-- 引入 editor.md 的依赖 -->
+    <link rel="stylesheet" href="editor.md/css/editormd.min.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="editor.md/lib/marked.min.js"></script>
+    <script src="editor.md/lib/prettify.min.js"></script>
+    <script src="editor.md/editormd.js"></script>
 </head>
 <body>
         <!-- 导航栏 -->
@@ -40,22 +47,68 @@
             <div class="right">
                 <!-- 这里是一篇博客的具体内容 -->
                 <div class="desc">
-                    <h2 class="title">这是一篇博客</h2>
-                    <div class="date">2022-07-23</div>
-                    <p>今天开始写博客 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores aspernatur odit voluptatem reiciendis repellendus debitis laudantium obcaecati, quasi deserunt blanditiis amet, praesentium ut nobis, perspiciatis cumque est odio id eveniet.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit obcaecati ullam nisi perferendis voluptas deserunt. Blanditiis, dolorum doloribus quis, nemo laborum eaque quos quisquam consequatur libero, doloremque numquam. Nemo, ipsam.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui repellendus praesentium consequatur ducimus possimus eius laboriosam eligendi asperiores ut nemo reiciendis earum quidem, iusto non ipsum voluptates modi delectus necessitatibus!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, nisi! Harum ducimus laboriosam suscipit! Repudiandae repellat numquam dicta vitae ipsum corporis ratione tempora dignissimos, nulla delectus voluptas maxime, iusto laborum!</p>
-                    <p>今天开始写博客 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores aspernatur odit voluptatem reiciendis repellendus debitis laudantium obcaecati, quasi deserunt blanditiis amet, praesentium ut nobis, perspiciatis cumque est odio id eveniet.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit obcaecati ullam nisi perferendis voluptas deserunt. Blanditiis, dolorum doloribus quis, nemo laborum eaque quos quisquam consequatur libero, doloremque numquam. Nemo, ipsam.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui repellendus praesentium consequatur ducimus possimus eius laboriosam eligendi asperiores ut nemo reiciendis earum quidem, iusto non ipsum voluptates modi delectus necessitatibus!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, nisi! Harum ducimus laboriosam suscipit! Repudiandae repellat numquam dicta vitae ipsum corporis ratione tempora dignissimos, nulla delectus voluptas maxime, iusto laborum!</p>
-                    <p>今天开始写博客 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores aspernatur odit voluptatem reiciendis repellendus debitis laudantium obcaecati, quasi deserunt blanditiis amet, praesentium ut nobis, perspiciatis cumque est odio id eveniet.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit obcaecati ullam nisi perferendis voluptas deserunt. Blanditiis, dolorum doloribus quis, nemo laborum eaque quos quisquam consequatur libero, doloremque numquam. Nemo, ipsam.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui repellendus praesentium consequatur ducimus possimus eius laboriosam eligendi asperiores ut nemo reiciendis earum quidem, iusto non ipsum voluptates modi delectus necessitatibus!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, nisi! Harum ducimus laboriosam suscipit! Repudiandae repellat numquam dicta vitae ipsum corporis ratione tempora dignissimos, nulla delectus voluptas maxime, iusto laborum!</p>
+                    <!-- 博客标题 -->
+                    <h2 class="title"></h2>
+                    <!-- 博客时间 -->
+                    <div class="date"></div>
+                    <!-- 博客正文 -->
+                    <div id="content" style="opacity:80%;">
+
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script src="./js/jquery.min.js"></script>
+        <script>
+            function getBlogByBlogId(){
+                $.ajax({
+                    type:'get',
+                    // 通过 location.search 就可以拿到类似于：?blogId=5 的完整 QueryString
+                    url:'blog' + location.search,
+                    success:function(body){
+                        //这 js 会将 body 中的数据转换成一个 json 格式的对象
+                        
+                        //填充博客标题
+                        let title = document.querySelector('.title');
+                        title.innerHTML = body.title;
+
+                        //填充博客时间
+                        let date = document.querySelector('.date');
+                        date.innerHTML = body.postTime;
+
+                        //填充博客正文
+                        // let content = document.querySelector('p');
+                        // content.innerHTML = body.content;
+                        editormd.markdownToHTML('content',{
+                            markdown : body.content,
+                        });
+
+                    }
+                });
+            };
+            getBlogByBlogId();
+        </script>
+
+        <script>
+            function getUserInfo(){
+                $.ajax({
+                    type:'get',
+                    url:'login',
+                    success:function(body){
+                        //判断body中对象的 userId = 0
+                        if(body.username && body.userId > 0){
+                            console.log("用户以登录,用户:"+body.username);
+                        }else{
+                            alert("请先进行用户登录!");
+                            location.assign('blog_login.html');
+                        }
+                    },
+                });
+            };
+
+            getUserInfo();
+        </script>  
+        
 </body>
 </html>

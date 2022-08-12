@@ -127,6 +127,7 @@ body{
 
 /* 右边栏的大致框架 */
 .container .right{
+    /* 这个表示添加上一个滚轮 */
     overflow: auto;
     height: 100%;
     width: 960px;

@@ -45,7 +45,8 @@ public class BlogDao {
         ResultSet resultSet = null;
         try{
             connection = JDBCUtils.getConnection();
-            String sql = "select * from blog";
+            //查询结果排个序,按发布时间的降序来查询
+            String sql = "select * from blog order by postTime desc";
             statement = connection.prepareStatement(sql);
             resultSet = statement.executeQuery();
             //遍历结果集

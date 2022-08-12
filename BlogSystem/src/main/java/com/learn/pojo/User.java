@@ -1,9 +1,9 @@
 package com.learn.pojo;
 //每一个 User 对象 也就代表 数据库 中每一条 user 数据
 public class User {
-    private int userId;
-    private String username;
-    private String password;
+    private int userId = 0;
+    private String username = "";
+    private String password = "";
 
     public User() {
     }

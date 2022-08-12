@@ -1,7 +1,7 @@
 let right = document.querySelector(".right");
 $.ajax({
     type:'get',
-    url:'blogList',
+    url:'blog',
     success:function(body){
         //将 right 里的数据清空
         right.innerHTML = "";

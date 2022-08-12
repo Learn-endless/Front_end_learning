@@ -18,20 +18,22 @@
         </div>
         <!-- 登录页面 -->
         <div class="login-container">
-            <div class="login">
-                <div class="title">登录</div>
-                    <div class="user">
-                        <span>用户名:</span>
-                        <input type="text">
-                    </div>
-                    <div class="user">
-                        <span>密码:</span>
-                        <input type="password">
-                    </div>
-                    <div class="one">
-                        <input type="button" value="提交">
-                    </div>
-            </div>
+            <form action="login" method="post">
+                <div class="login">
+                    <div class="title">登录</div>
+                        <div class="user">
+                            <span>用户名:</span>
+                            <input type="text" name="username">
+                        </div>
+                        <div class="user">
+                            <span>密码:</span>
+                            <input type="password" name="password">
+                        </div>
+                        <div class="one">
+                            <input type="submit" value="提交">
+                        </div>
+                </div>
+            </form>
         </div>
 </body>
 </html>

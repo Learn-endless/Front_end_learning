@@ -134,7 +134,7 @@ public class UserDao {
         ResultSet resultSet = null;
         try{
             connection = JDBCUtils.getConnection();
-            String sql = "select * from where username = ?";
+            String sql = "select * from user where username = ?";
             statement = connection.prepareStatement(sql);
             statement.setString(1,username);
             resultSet = statement.executeQuery();

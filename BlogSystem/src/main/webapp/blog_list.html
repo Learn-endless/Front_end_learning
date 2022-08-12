@@ -40,28 +40,28 @@
         <!-- 右边栏 -->
         <div class="right">
             <!-- 每一篇博客都有样式 -->
-            <div class="blog">
+            <!-- <div class="blog">
                 <div class="title">我的第一篇博客</div>
                 <div class="date">2022-07-23</div>
                 <div class="desc">从今天起我要认真敲代码 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut eaque dolore amet, omnis nam, error eius necessitatibus optio repudiandae, voluptatem iusto pariatur odio voluptatibus veritatis vitae ut possimus qui incidunt! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, sapiente, inventore doloremque quidem earum error itaque recusandae sint odit, natus a? Sed id, culpa modi quaerat facilis expedita eius officia?</div>
                 <a href="#">查看全文&gt;&gt;</a>
-            </div>
+            </div> -->
 
             <!-- 每一篇博客都有样式 -->
-            <div class="blog">
+            <!-- <div class="blog">
                 <div class="title">我的第二篇博客</div>
                 <div class="date">2022-07-25</div>
                 <div class="desc">从今天起我要认真敲代码 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut eaque dolore amet, omnis nam, error eius necessitatibus optio repudiandae, voluptatem iusto pariatur odio voluptatibus veritatis vitae ut possimus qui incidunt! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, sapiente, inventore doloremque quidem earum error itaque recusandae sint odit, natus a? Sed id, culpa modi quaerat facilis expedita eius officia?</div>
                 <a href="#">查看全文&gt;&gt;</a>
-            </div>
+            </div> -->
 
             <!-- 每一篇博客都有样式 -->
-            <div class="blog">
+            <!-- <div class="blog">
                 <div class="title">我的第三篇博客</div>
                 <div class="date">2022-07-27</div>
                 <div class="desc">从今天起我要认真敲代码 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut eaque dolore amet, omnis nam, error eius necessitatibus optio repudiandae, voluptatem iusto pariatur odio voluptatibus veritatis vitae ut possimus qui incidunt! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, sapiente, inventore doloremque quidem earum error itaque recusandae sint odit, natus a? Sed id, culpa modi quaerat facilis expedita eius officia?</div>
                 <a href="#">查看全文&gt;&gt;</a>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -70,5 +70,27 @@
 
     <!-- 引入js编写的具体逻辑 -->
     <script src="./js/blog_list.js"></script>
+
+    <script>
+        function getUserInfo(){
+            $.ajax({
+                type:'get',
+                url:'login',
+                success:function(body){
+                    //判断body中对象的 userId = 0
+                    if(body.username && body.userId > 0){
+                        console.log("用户以登录,用户:"+body.username);
+                    }else{
+                        alert("请先进行用户登录!");
+                        // 通过 location.assign 可以在 js 中实现页面跳转
+                        location.assign('blog_login.html');
+                    }
+                },
+            });
+        };
+
+        getUserInfo();
+    </script>  
+
 </body>
 </html>

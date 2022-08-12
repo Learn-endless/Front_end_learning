@@ -39,7 +39,7 @@ public class JDBCUtils {
 
     //释放资源
     public static void closeAll(Connection connection, PreparedStatement statement, ResultSet resultSet){
-        if(connection == null) {
+        if(connection != null) {
             try {
                 connection.close();
             } catch (SQLException e) {
@@ -47,7 +47,7 @@ public class JDBCUtils {
             }
         }
 
-        if(statement == null){
+        if(statement != null){
             try {
                 statement.close();
             } catch (SQLException e) {
@@ -55,7 +55,7 @@ public class JDBCUtils {
             }
         }
 
-        if(resultSet == null){
+        if(resultSet != null){
             try {
                 resultSet.close();
             } catch (SQLException e) {
