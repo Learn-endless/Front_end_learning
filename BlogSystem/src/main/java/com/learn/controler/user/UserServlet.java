@@ -55,21 +55,27 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取session
         HttpSession session = req.getSession(false);
+        //判断是否存在会话
         if(session == null){
+            //new 一个空对象,并通过 json 格式进行返回
             User userNew = new User();
             resp.setContentType("application/json;charset=utf8");
             resp.getWriter().write(objectMapper.writeValueAsString(userNew));
             return;
         }
+        //查询会话中的 user 这个键值对
         User user = (User)session.getAttribute("user");
+        // 判断 user 键值对是否 有效
         if(user == null || user.getUserId() == 0){
             User userNew = new User();
             resp.setContentType("application/json;charset=utf8");
             resp.getWriter().write(objectMapper.writeValueAsString(userNew));
             return;
         }
-        user.setPassword("");
+        //到这里就表示登录成功过了
+        user.setPassword("");     //将密码清空
         resp.setContentType("application/json;charset=utf8");
+        //转换成 json 格式的字符串 写到 body 中
         resp.getWriter().write(objectMapper.writeValueAsString(user));
     }
 }

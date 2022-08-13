@@ -1,3 +1,4 @@
+// 博客列表页加载逻辑
 let right = document.querySelector(".right");
 $.ajax({
     type:'get',
