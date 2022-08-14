@@ -68,12 +68,35 @@
     <!-- 引入jQuery方便后续使用jQuery中的ajax -->
     <script src="./js/jquery.min.js"></script>
 
-    <!-- 引入js编写的具体逻辑 -->
+    <!-- 博客列表页数据加载逻辑 -->
     <script src="./js/blog_list.js"></script>
 
-    <!-- 引入检测是否登录逻辑 -->
-    <script src="./js/check_login.js"></script>  
-    <script >getUserInfo('blog_list.html');</script>  
+    <script >
+    
+        // 判断用户是否已经登录逻辑(博客列表、博客详情、博客编辑 都需要先登录，再才能查看并操作)
+        function getUserInfo(){
+            $.ajax({
+                type:'get',
+                url:'login',
+                success:function(body){
+                    //判断body中对象的 userId = 0
+                    if(body.username && body.userId > 0){
+                        console.log("用户以登录,用户:"+body.username);
+                        //用来将对应的 username 显示到页面上
+                        let userName = document.querySelector(".card>span");
+                        userName.innerHTML = body.username;
+
+                    }else{
+                        alert("请先进行用户登录!");
+                        // 通过 location.assign 可以在 js 中实现页面跳转
+                        location.assign('blog_login.html');
+                    }
+                },
+            });
+        };
+    
+        getUserInfo();
+    </script>  
 
 </body>
 </html>
