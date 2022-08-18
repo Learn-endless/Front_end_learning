@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客详情页</title>
+    <link rel="stylesheet" href="CSS/common.css">
+    <link rel="stylesheet" href="CSS/blog_desc.css">
+
+    <!-- 引入 editor.md 的依赖 -->
+    <link rel="stylesheet" href="editor.md/css/editormd.min.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="editor.md/lib/marked.min.js"></script>
+    <script src="editor.md/lib/prettify.min.js"></script>
+    <script src="editor.md/editormd.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav">
+        <img src="image/tiger.png" >
+        <span>我的博客系统</span>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+        <a href="cancel">注销</a>
+    </div>
+    <!-- 版心 -->
+    <div class="container">
+        <!-- 左边栏 -->
+        <div class="left">
+            <!-- 卡片信息 -->
+            <div class="card">
+                <img src="image/dog.png" alt="">
+                <span></span>
+                <a href="#">github 地址</a>
+                <div class="res">
+                    <span>文章</span>
+                    <span>分类</span>
+                </div>
+                <div class="res">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <!-- 右边栏 -->
+        <div class="right">
+            <!-- 这里是一篇博客的具体内容 -->
+            <div class="desc">
+                <!-- 博客标题 -->
+                <h2 class="title"></h2>
+                <!-- 博客时间 -->
+                <div class="date"></div>
+                <!-- 博客正文 -->
+                <div id="content" style="opacity:80%;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入jQuery -->
+    <script src="./js/jquery.min.js"></script>
+
+    <script src="./js/blog_desc.js"></script>
+
+    <script>
+        //博客详情页页面加载数据 blog_desc.js
+        getBlogByBlogId();
+
+        // 判断是否登录逻辑(博客列表、博客详情、博客编辑 都需要先登录，再才能查看并操作)
+        function getUserInfo(){
+            $.ajax({
+                type:'get',
+                url:'login',
+                success:function(body){
+                    //判断body中对象的 userId = 0
+                    if(body.username && body.userId > 0){
+                        console.log("用户以登录,用户:"+body.username);
+
+                        //在这里调用 authorName() 用来显示用户信息和删除按钮
+                        authorName(body);
+                    }else{
+                        alert("请先进行用户登录!");
+                        // 通过 location.assign 可以在 js 中实现页面跳转
+                        location.assign('blog_login.html');
+                    }
+                },
+            });
+        };
+
+        //在博客详情页显示博客的详细信息
+        function authorName(user){
+            $.ajax({
+                type:'get',
+                url:'getUserName' + location.search,
+                success:function(body){
+                    //判断有没有username属性
+                    if(body.username){
+                        //将用户名填充到span标签中
+                        let name = document.querySelector(".card>span");
+                        name.innerHTML = body.username;
+
+                        //在这里判断登录的用户和博客的作者是否一致
+                        if(body.username == user.username){
+                            //在导航栏中创建一个 删除按钮
+                            let nav = document.querySelector(".nav");
+                            let a = document.createElement("a");
+                            a.href = "deleteBlog" + location.search;
+                            a.innerHTML = "删除";
+                            //将 a 挂到 dom树上
+                            nav.appendChild(a);
+                        }
+                    }else{
+                        //没有username属性，就打印一些原因
+                        console.log("获取失败!,原因："+ body.reason);
+                    };
+                },
+            });
+        };
+
+        //检查用户是否登录 check_login.js
+        getUserInfo();
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客列表页</title>
+    <!-- 引入CSS样式 -->
+    <link rel="stylesheet" href="CSS/common.css">
+    <link rel="stylesheet" href="CSS/blog_list.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav">
+        <img src="image/tiger.png" >
+        <span>我的博客系统</span>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+        <a href="cancel">注销</a>
+    </div>
+    <!-- 版心 -->
+    <div class="container">
+        <!-- 左边栏 -->
+        <div class="left">
+            <!-- 卡片信息 -->
+            <div class="card">
+                <img src="image/dog.png" alt="">
+                <span></span>
+                <a href="#">github 地址</a>
+                <div class="res">
+                    <span>文章</span>
+                    <span>分类</span>
+                </div>
+                <div class="res">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <!-- 右边栏 -->
+        <div class="right">
+            <!-- 每一篇博客都有样式 -->
+            <!-- <div class="blog">
+                <div class="title">我的第一篇博客</div>
+                <div class="date">2022-07-23</div>
+                <div class="desc">从今天起我要认真敲代码 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut eaque dolore amet, omnis nam, error eius necessitatibus optio repudiandae, voluptatem iusto pariatur odio voluptatibus veritatis vitae ut possimus qui incidunt! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, sapiente, inventore doloremque quidem earum error itaque recusandae sint odit, natus a? Sed id, culpa modi quaerat facilis expedita eius officia?</div>
+                <a href="#">查看全文&gt;&gt;</a>
+            </div> -->
+
+            <!-- 每一篇博客都有样式 -->
+            <!-- <div class="blog">
+                <div class="title">我的第二篇博客</div>
+                <div class="date">2022-07-25</div>
+                <div class="desc">从今天起我要认真敲代码 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut eaque dolore amet, omnis nam, error eius necessitatibus optio repudiandae, voluptatem iusto pariatur odio voluptatibus veritatis vitae ut possimus qui incidunt! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, sapiente, inventore doloremque quidem earum error itaque recusandae sint odit, natus a? Sed id, culpa modi quaerat facilis expedita eius officia?</div>
+                <a href="#">查看全文&gt;&gt;</a>
+            </div> -->
+
+            <!-- 每一篇博客都有样式 -->
+            <!-- <div class="blog">
+                <div class="title">我的第三篇博客</div>
+                <div class="date">2022-07-27</div>
+                <div class="desc">从今天起我要认真敲代码 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut eaque dolore amet, omnis nam, error eius necessitatibus optio repudiandae, voluptatem iusto pariatur odio voluptatibus veritatis vitae ut possimus qui incidunt! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, sapiente, inventore doloremque quidem earum error itaque recusandae sint odit, natus a? Sed id, culpa modi quaerat facilis expedita eius officia?</div>
+                <a href="#">查看全文&gt;&gt;</a>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- 引入jQuery方便后续使用jQuery中的ajax -->
+    <script src="./js/jquery.min.js"></script>
+
+    <!-- 博客列表页数据加载逻辑 -->
+    <script src="./js/blog_list.js"></script>
+
+    <script >
+    
+        // 判断用户是否已经登录逻辑(博客列表、博客详情、博客编辑 都需要先登录，再才能查看并操作)
+        function getUserInfo(){
+            $.ajax({
+                type:'get',
+                url:'login',
+                success:function(body){
+                    //判断body中对象的 userId = 0
+                    if(body.username && body.userId > 0){
+                        console.log("用户以登录,用户:"+body.username);
+                        //用来将对应的 username 显示到页面上
+                        let userName = document.querySelector(".card>span");
+                        userName.innerHTML = body.username;
+
+                    }else{
+                        alert("请先进行用户登录!");
+                        // 通过 location.assign 可以在 js 中实现页面跳转
+                        location.assign('blog_login.html');
+                    }
+                },
+            });
+        };
+    
+        getUserInfo();
+    </script>  
+
+</body>
+</html>

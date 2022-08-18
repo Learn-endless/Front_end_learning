@@ -1,0 +1,19 @@
+.desc{
+    padding: 20px;
+}
+
+.desc .title{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.desc .date{
+    text-align: center;
+    color: green;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+.desc #content{
+    text-indent: 2em;
+    line-height: 30px;
+}

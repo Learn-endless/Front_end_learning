@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class JDBCUtils {
     private static String URL = "jdbc:mysql://127.0.0.1:3306/blog_system?characterEncoding=utf8&useSSL=false";
     private static String USERNAME = "root";
-    private static String PASSWORD = "1234";
+    private static String PASSWORD = "";
 
     //使用单利模式来获取数据源
     private volatile static DataSource dataSource = null;
